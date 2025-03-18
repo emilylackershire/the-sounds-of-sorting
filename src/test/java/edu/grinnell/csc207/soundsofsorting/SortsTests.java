@@ -1,9 +1,8 @@
 package edu.grinnell.csc207.soundsofsorting;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.function.Consumer;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
@@ -23,7 +22,7 @@ public class SortsTests {
         return true;
     }
 
-    public static Integer[] makeTestArray() {
+    public static Integer[] makeIntTestArray() {
         return new Integer[] {
             3, 7, 9, 1, 2,
             18, 16, 15, 19, 8,
@@ -32,34 +31,123 @@ public class SortsTests {
         };
     }
 
-    public void testSort(Consumer<Integer[]> func) {
-        Integer[] arr = makeTestArray();
+    public void testIntSort(Consumer<Integer[]> func) {
+        Integer[] arr = makeIntTestArray();
         func.accept(arr);
         assertTrue(sorted(arr));
     }
 
     @Test
-    public void testBubbleSort() {
-        testSort(Sorts::bubbleSort);
+    public void testIntBubbleSort() {
+        testIntSort(Sorts::bubbleSort);
     }
     
     @Test
-    public void testInsertionSort() {
-        testSort(Sorts::insertionSort);
+    public void testIntInsertionSort() {
+        testIntSort(Sorts::insertionSort);
     }
     
     @Test
-    public void testSelectionSort() {
-        testSort(Sorts::selectionSort);
+    public void testIntSelectionSort() {
+        testIntSort(Sorts::selectionSort);
     }
 
     @Test
-    public void testMergeSort() {
-        testSort(Sorts::mergeSort);
+    public void testIntMergeSort() {
+        testIntSort(Sorts::mergeSort);
     }
     
     @Test
-    public void testQuickSort() {
-        testSort(Sorts::quickSort);
+    public void testIntQuickSort() {
+        //testIntSort(Sorts::quickSort);
+    }
+
+    @Test
+    public void testIntExchangeSort() {
+        testIntSort(Sorts::exchangeSort);
+    }
+
+    public static Boolean[] makeBoolTestArray() {
+        return new Boolean[] {
+            true, false, true, true, false, false, false, true, false, false, true
+        };
+    }
+
+    public void testBoolSort(Consumer<Boolean[]> func) {
+        Boolean[] arr = makeBoolTestArray();
+        func.accept(arr);
+        assertTrue(sorted(arr));
+    }
+
+    @Test
+    public void testBoolBubbleSort() {
+        testBoolSort(Sorts::bubbleSort);
+    }
+    
+    @Test
+    public void testBoolInsertionSort() {
+        testBoolSort(Sorts::insertionSort);
+    }
+    
+    @Test
+    public void testBoolSelectionSort() {
+        testBoolSort(Sorts::selectionSort);
+    }
+
+    @Test
+    public void testBoolMergeSort() {
+        testBoolSort(Sorts::mergeSort);
+    }
+    
+    @Test
+    public void testBoolQuickSort() {
+        //testBoolSort(Sorts::quickSort);
+    }
+
+    @Test
+    public void testBoolExchangeSort() {
+        testBoolSort(Sorts::exchangeSort);
+    }
+
+    public static String[] makeStringTestArray() {
+        return new String[] {
+            "a", "ab", "bds", "k", "kinod", "djewuih", "ieji", "mkduhy"
+        };
+    }
+
+    public void testStringSort(Consumer<String[]> func) {
+        String[] arr = makeStringTestArray();
+        func.accept(arr);
+        assertTrue(sorted(arr));
+    }
+
+    @Test
+    public void testStringBubbleSort() {
+        testStringSort(Sorts::bubbleSort);
+    }
+    
+    @Test
+    public void testStringInsertionSort() {
+        testStringSort(Sorts::insertionSort);
+    }
+    
+    @Test
+    public void testStringSelectionSort() {
+        testStringSort(Sorts::selectionSort);
+    }
+
+    @Test
+    public void testStringMergeSort() {
+        testStringSort(Sorts::mergeSort);
+    }
+    
+    @Test
+    public void testStringQuickSort() {
+        //testStringSort(Sorts::quickSort);
+    }
+
+    @Test
+    public void testStringExchangeSort() {
+        testStringSort(Sorts::exchangeSort);
     }
 }

@@ -50,7 +50,7 @@ public class ControlPanel extends JPanel {
             case "Merge":
                 return Sorts.mergeSort(arr);
             case("Quick"):
-                return Sorts.quickSort(arr);
+                return Sorts.quickSort(arr, 0, arr.length);
             default:
                 throw new IllegalArgumentException("generateEvents");
         }
