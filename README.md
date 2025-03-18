@@ -1,8 +1,15 @@
 # CSC 207: The Sounds of Sorting
 
-Author: _(TODO: insert your name here!)_
+Author: Emily Lackershire
 
 ## Resources
 
-*   _(TODO: list your resources here!)_
-*   ...
++ Java 17
++ Visual Studio Code
++ git & github
++ Instructions provided from Professor Osera of Grinnell College, accessed through his website: 
+  https://osera.cs.grinnell.edu/ttap/data-structures-labs/the-sounds-of-sorting.html
++ Applicable sorting methods are from the lab in class, which I worked on with Colton Benson, directions accesed thorugh professor Oseras website: 
+  https://osera.cs.grinnell.edu/ttap/data-structures-labs/sorts.html
++ I used the Wikipedia article provided in the directions to look for other sorting methods: 
+  https://en.wikipedia.org/wiki/Sorting_algorithm
