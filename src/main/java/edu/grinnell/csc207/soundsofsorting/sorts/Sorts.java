@@ -3,12 +3,21 @@ package edu.grinnell.csc207.soundsofsorting.sorts;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.grinnell.csc207.soundsofsorting.sortevents.CompareEvent;
+import edu.grinnell.csc207.soundsofsorting.sortevents.CopyEvent;
 import edu.grinnell.csc207.soundsofsorting.sortevents.SortEvent;
+import edu.grinnell.csc207.soundsofsorting.sortevents.SwapEvent;
 
 /**
  * A collection of sorting algorithms.
  */
 public class Sorts {
+    static CompareEvent compEvent = new CompareEvent();
+    static List<Integer> compare = compEvent.getCompare();
+    static CopyEvent copEvent = new CopyEvent();
+    static List<Integer> copied = copEvent.getCopied();
+    static SwapEvent swappedEvent = new SwapEvent();
+    static List<Integer> swapped = swappedEvent.getSwapped();
     /**
      * Swaps indices <code>i</code> and <code>j</code> of array <code>arr</code>.
      * @param <T> the carrier type of the array
@@ -35,7 +44,9 @@ public class Sorts {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
+                    compare.add(j);
                     swap(arr, j, j + 1);
+                    swapped.add(j);
                 }
             }
         }
@@ -216,5 +227,8 @@ public class Sorts {
             }
         }
         return null;
+    }
+    <T> void eventSort(T[] l, List<SortEvent<T>> events){
+
     }
 }
