@@ -13,3 +13,5 @@ Author: Emily Lackershire
   https://osera.cs.grinnell.edu/ttap/data-structures-labs/sorts.html
 + I used the Wikipedia article provided in the directions to look for other sorting methods: 
   https://en.wikipedia.org/wiki/Sorting_algorithm
++ I got a bit confused on getting methods from the other classes and needed a refresher on how to do that:
+  https://forums.oracle.com/ords/apexds/post/how-to-call-a-method-from-another-class-7467
