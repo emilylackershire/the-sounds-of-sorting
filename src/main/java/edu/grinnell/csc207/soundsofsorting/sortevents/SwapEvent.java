@@ -13,12 +13,18 @@ public class SwapEvent<T> {
         return swapped;
     }
 
+    public static <T> void swap(T[] arr, int i, int j) {
+        T tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
     /**
      * Applies this event to the array.
      * @param arr the array to modify
      */
-    public void apply(T[] arr){
-        
+    public void apply(T[] arr, int index1, int index2){
+        swap(arr, index1, index2);
     }
 
     /**

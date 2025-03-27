@@ -16,8 +16,8 @@ public class CopyEvent<T> {
      * Applies this event to the array.
      * @param arr the array to modify
      */
-    public void apply(T[] arr){
-        
+    public void apply(T[] arr, int index1, int index2){
+        arr[index1] = arr[index2];
     }
 
     /**

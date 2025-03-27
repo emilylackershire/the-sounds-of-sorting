@@ -17,9 +17,7 @@ public class CompareEvent<T> {
      * Applies this event to the array.
      * @param arr the array to modify
      */
-    public void apply(T[] arr){
-        
-    }
+    public void apply(T[] arr, int index) { }
 
     /**
      * @return a list of the indices affected by this event

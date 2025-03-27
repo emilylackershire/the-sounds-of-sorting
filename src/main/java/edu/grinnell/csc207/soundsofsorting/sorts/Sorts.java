@@ -53,6 +53,7 @@ public class Sorts {
                     sortedEvents.add("compare");
                     swap(arr, j, j + 1);
                     swapped.add(j);
+                    swapped.add(j + 1);
                 }
             }
         }
@@ -81,6 +82,7 @@ public class Sorts {
                     }
                     swap(arr, i, min);
                     swapped.add(i);
+                    swapped.add(min);
                 }
         return (SortEvent<T>) sortedEvents;
     }
@@ -103,6 +105,7 @@ public class Sorts {
                         sortedEvents.add("compare");
                         swap(arr, j, j - 1);
                         swapped.add(j);
+                        swapped.add(j - 1);
                         j--;
                     }
                 }
@@ -125,6 +128,7 @@ public class Sorts {
                 compare.add(i);
                 sortedEvents.add("compare");
                 arr3[k] = arr1[i];
+                copied.add(k);
                 copied.add(i);
                 sortedEvents.add("copy");
                 k++;
@@ -132,6 +136,7 @@ public class Sorts {
             } else {
                 arr3[k] = arr2[j];
                 copied.add(k);
+                copied.add(j);
                 sortedEvents.add("copy");
                 k++;
                 j++;
@@ -140,6 +145,7 @@ public class Sorts {
         while (i < arr1.length) {
             arr3[k] = arr1[i];
             copied.add(k);
+            copied.add(i);
             sortedEvents.add("copy");
             k++;
             i++;
@@ -147,6 +153,7 @@ public class Sorts {
         while (j < arr2.length) {
             arr3[k] = arr2[j];
             copied.add(k);
+            copied.add(j);
             sortedEvents.add("copy");
             k++;
             j++;
@@ -192,6 +199,7 @@ public class Sorts {
                 for (int i = 0; i < arr.length; i++) {
                     arr[i] = arrTmp[i];
                     copied.add(i);
+                    copied.add(i);
                     sortedEvents.add("copy");
                 }
             return (SortEvent<T>) sortedEvents;
@@ -218,6 +226,7 @@ public class Sorts {
                 sortedEvents.add("compare");
                 swap(arr, left, right);
                 swapped.add(left);
+                swapped.add(right);
             } else {
                 if (arr[left].compareTo(arr[med]) < 0) {
                     compare.add(left);
@@ -234,6 +243,8 @@ public class Sorts {
             compare.add(left);
             sortedEvents.add("compare");
             swap(arr, med, left);
+            swapped.add(med);
+            swapped.add(left);
         } else {
             left++;
         }
@@ -277,12 +288,31 @@ public class Sorts {
                     sortedEvents.add("compare");
                     swap(arr, i, j);
                     swapped.add(j);
+                    swapped.add(i);
                 }
             }
         }
         return (SortEvent<T>) sortedEvents;
     }
-    <T> void eventSort(T[] l, List<SortEvent<T>> events){
-        
+    
+    CopyEvent copy = new CopyEvent();
+    SwapEvent swap = new SwapEvent();
+    CompareEvent comparing = new CompareEvent();
+
+    <T> void eventSort(T[] l, List<String> events){
+        for (int i = 0; i < l.length; i++) {
+            if ("copy".equals(events.get(i))) {
+                copy.apply(l, i, i+1);
+                i++;
+            }
+            else if ("swap".equals(events.get(i))) {
+                swap.apply(l, i, i + 1);
+                i++;
+            }
+            else if ("compare".equals(events.get(i))) {
+                comparing.apply(l, i);
+                i++;
+            }
+        }
     }
 }
