@@ -59,7 +59,7 @@ public class SortsTests {
     
     @Test
     public void testIntQuickSort() {
-        //testIntSort(Sorts::quickSort);
+        testIntSort(Sorts::quickSort);
     }
 
     @Test
@@ -143,7 +143,7 @@ public class SortsTests {
     
     @Test
     public void testStringQuickSort() {
-        //testStringSort(Sorts::quickSort);
+        testStringSort(Sorts::quickSort);
     }
 
     @Test
