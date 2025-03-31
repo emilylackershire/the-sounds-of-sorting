@@ -63,7 +63,6 @@ public class ArrayPanel extends JPanel {
             barValues = (indices[i/ barWidth]);
             barMax = (indices[max]);
             barScale = barValues/barMax;
-            System.out.println(barHeight);
             blue = (int)(255 * barScale);
             Color color = new Color(0, 0, blue);
             g.setColor(color);

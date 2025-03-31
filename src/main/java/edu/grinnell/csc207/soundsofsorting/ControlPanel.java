@@ -155,9 +155,8 @@ public class ControlPanel extends JPanel {
                     public void run() {
                         if (index < events.size()) {
                             SortEvent<Integer> e = events.get(index++);
-                            // TODO: fill me in!
                             Sorts sorting = new Sorts();
-                            //sorts.eventSort(events);
+                            sorts.eventSort(events);
                             // 1. Apply the next sort event.
                             // 3. Play the corresponding notes denoted by the
                             //    affected indices logged in the event.

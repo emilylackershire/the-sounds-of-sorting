@@ -15,3 +15,6 @@ Author: Emily Lackershire
   https://en.wikipedia.org/wiki/Sorting_algorithm
 + I got a bit confused on getting methods from the other classes and needed a refresher on how to do that:
   https://forums.oracle.com/ords/apexds/post/how-to-call-a-method-from-another-class-7467
++ Used this to find the things needed for graphics: 
+  https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics.html
+  
