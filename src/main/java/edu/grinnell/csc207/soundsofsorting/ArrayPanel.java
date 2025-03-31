@@ -1,4 +1,5 @@
 package edu.grinnell.csc207.soundsofsorting;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -10,6 +11,8 @@ import javax.swing.JPanel;
 public class ArrayPanel extends JPanel {
     @SuppressWarnings("unused")
     private NoteIndices notes;
+    private static final int WIDTH = 400;
+    private static final int HEIGHT = 300;
    
     /**
      * Create a new <code>ArrayPanel</code> with the given notes and dimensions.
@@ -21,9 +24,50 @@ public class ArrayPanel extends JPanel {
         this.notes = notes;
         this.setPreferredSize(new Dimension(width, height));
     }
+    /**
+     * 
+     * @param notes
+     * @return
+     */
+    public int length(NoteIndices notes) {
+        Integer[] indices = notes.getNotes();
+        int length = indices.length;
+        return length;
+    }
+    /**
+     * gets the max index of the notes
+     * @param notes
+     * @return - max index
+     */
+    public int maxIndex(Integer[] arr) {
+        int max = 0;
+        for(int i = 1; i < arr.length; i++) {
+            if(arr[i] > arr[max]) {
+                max = i;
+            }
+        }
+        return max;
+    }
 
     @Override
     public void paintComponent(Graphics g) {
-        // TODO: fill me in!
+        int barHeight, blue;
+        double barScale, barValues, barMax;
+        Integer[] indices = notes.getNotes();
+        int max = maxIndex(indices);
+        int barWidth = WIDTH / indices.length;
+        g.clearRect(0, 0, WIDTH, HEIGHT); 
+ 
+        for(int i = 0; i < indices.length * barWidth; i+= barWidth) {
+            barHeight = ((indices[i/ barWidth]) * (HEIGHT / indices[max])) + HEIGHT/indices[max];
+            barValues = (indices[i/ barWidth]);
+            barMax = (indices[max]);
+            barScale = barValues/barMax;
+            System.out.println(barHeight);
+            blue = (int)(255 * barScale);
+            Color color = new Color(0, 0, blue);
+            g.setColor(color);
+            g.fillRect(i, HEIGHT - barHeight, barWidth, barHeight); 
+        }
     }
 }

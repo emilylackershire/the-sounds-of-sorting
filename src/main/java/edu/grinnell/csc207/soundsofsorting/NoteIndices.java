@@ -12,9 +12,10 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
-        Integer[] notes = new Integer[n];
-        notes = this.notes;
-        highlighted = this.highlighted;
+        if(n > 0) {
+            notes = new Integer[n];
+            highlighted = new boolean[n];
+        }
     }
     
     /**
@@ -24,7 +25,10 @@ public class NoteIndices {
      */
     public static Integer[] shuffle(Integer[] arr) {
         int n;
-        for(int i = arr.length - 1; i >= 0; i--) {
+        if(arr == null) {
+            return arr;
+        }
+        else for(int i = arr.length - 1; i >= 0; i--) {
             n = (int)(Math.random()* (i + 1));
             Integer temp = arr[i];
             arr[i] = arr[n];
@@ -40,11 +44,13 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public void initializeAndShuffle(int n) {
+        notes = new Integer[n];
+        highlighted = new boolean[n];
         for(int i = 0; i < n; i++) {
             notes[i] = i;
             highlighted[i] = false;
         }
-        shuffle(notes);
+        shuffle(this.notes);
     }
     
     /** @return the indices of this NoteIndices object */
@@ -52,6 +58,11 @@ public class NoteIndices {
         return notes;
     }
     
+    /** @return the indices of this NoteIndices object */
+    public int getN() { 
+        return notes.length;
+    }
+
     /**
      * Highlights the given index of the note array
      * @param index the index to highlight
