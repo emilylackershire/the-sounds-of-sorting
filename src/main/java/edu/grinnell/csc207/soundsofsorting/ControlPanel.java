@@ -19,6 +19,8 @@ import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
  * Sorting application.
  */
 public class ControlPanel extends JPanel {
+    static Sorts sort = new Sorts();
+
     /** The frames-per-second that the program should render at */
     private static final int FPS = 20;
     
@@ -52,6 +54,8 @@ public class ControlPanel extends JPanel {
                 return Sorts.mergeSort(arr);
             case("Quick"):
                 return Sorts.quickSort(arr);
+            case("Exchange"):
+                return Sorts.exchangeSort(arr);
             default:
                 throw new IllegalArgumentException("generateEvents");
         }
@@ -101,7 +105,8 @@ public class ControlPanel extends JPanel {
             "Insertion",
             "Bubble",
             "Merge",
-            "Quick"
+            "Quick", 
+            "Exchange"
         });
         add(sorts);
         
@@ -155,8 +160,7 @@ public class ControlPanel extends JPanel {
                     public void run() {
                         if (index < events.size()) {
                             SortEvent<Integer> e = events.get(index++);
-                            Sorts sorting = new Sorts();
-                            sorts.eventSort(events);
+                            e.apply(notes.getNotes());
                             // 1. Apply the next sort event.
                             // 3. Play the corresponding notes denoted by the
                             //    affected indices logged in the event.

@@ -51,7 +51,7 @@ public class ArrayPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        int barHeight, blue;
+        int barHeight, blue, red, green;
         double barScale, barValues, barMax;
         Integer[] indices = notes.getNotes();
         int max = maxIndex(indices);
@@ -63,8 +63,10 @@ public class ArrayPanel extends JPanel {
             barValues = (indices[i/ barWidth]);
             barMax = (indices[max]);
             barScale = barValues/barMax;
-            blue = (int)(255 * barScale);
-            Color color = new Color(0, 0, blue);
+            red = (int)(255 * barScale);
+            green = (int)(200 * barScale);
+            blue = (int)(200 * barScale);
+            Color color = new Color(red, green, blue);
             g.setColor(color);
             g.fillRect(i, HEIGHT - barHeight, barWidth, barHeight); 
         }
