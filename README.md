@@ -20,6 +20,13 @@ Author: Emily Lackershire
   https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics.html
 
 ## Git Log
+
+commit 6dabb8cb6536a3bd012d6d288a8aa7ef2a5c861a (HEAD -> main, origin/main, origin/HEAD)
+Author: Emily <lackersh@grinnell.edu>
+Date:   Sun Mar 30 22:24:44 2025 -0500
+
+    updated readme
+
   commit 3e2be50b4a19894544c2da840c6cdafc3f56249d (HEAD -> main, origin/main, origin/HEAD)
 Author: Emily <lackersh@grinnell.edu>
 Date:   Sun Mar 30 22:22:23 2025 -0500
