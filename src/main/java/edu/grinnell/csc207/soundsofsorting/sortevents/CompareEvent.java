@@ -49,6 +49,5 @@ public class CompareEvent<T> implements SortEvent<T> {
 
     @Override
     public void apply(T[] arr) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

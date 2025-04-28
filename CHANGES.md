@@ -8,4 +8,4 @@ The program doesn't run the sorting visualization. On the other hand, it looks l
 
 ## Changes made
 
-I knew this was issues in the run function, so I started working there. 
+I knew this was issues in the run function, so I started working there. I wasn't calling the events sort, i was just making an empty list so I did this, which led to an error with selection sort. 
