@@ -13,11 +13,11 @@ import edu.grinnell.csc207.soundsofsorting.sortevents.SwapEvent;
  * A collection of sorting algorithms.
  */
 public class Sorts {
-    static CompareEvent compEvent = new CompareEvent();
+    static CompareEvent compEvent = new CompareEvent(0, 0);
     static List<Integer> compare = compEvent.getCompare();
-    static CopyEvent copEvent = new CopyEvent();
+    static CopyEvent copEvent = new CopyEvent(0, null);
     static List<Integer> copied = copEvent.getCopied();
-    static SwapEvent swappedEvent = new SwapEvent();
+    static SwapEvent swappedEvent = new SwapEvent(0, 0);
     static List<Integer> swapped = swappedEvent.getSwapped();
     static List<String> sortedEvents = new ArrayList<>();
 
@@ -311,9 +311,13 @@ public class Sorts {
         return (SortEvent<T>) sortedEvents;
     }
 
-    CopyEvent copy = new CopyEvent();
-    SwapEvent swap = new SwapEvent();
-    CompareEvent comparing = new CompareEvent();
+    public static CopyEvent getCopEvent() {
+        return copEvent;
+    }
+
+    CopyEvent copy = new CopyEvent(0, 0);
+    SwapEvent swap = new SwapEvent(0, 0);
+    CompareEvent comparing = new CompareEvent(0, 0);
 
     <T> void eventSort(T[] l, List<String> events) {
         for (int i = 0; i < l.length; i++) {

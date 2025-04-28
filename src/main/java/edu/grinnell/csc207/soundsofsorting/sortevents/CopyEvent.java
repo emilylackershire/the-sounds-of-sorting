@@ -6,9 +6,14 @@ import java.util.List;
 /**
  * A <code>CopyEvent</code> logs a copy of a value into an index of the array.
  */
-public class CopyEvent<T> {
+public class CopyEvent<T>  implements SortEvent<T> {
     List<Integer> copied = new ArrayList<>();
+    private T value;
 
+    public CopyEvent(int index, T value) {
+        copied.add(index);
+        this.value = value;
+    }
     /**
      * gets the copied
      * 
@@ -41,5 +46,10 @@ public class CopyEvent<T> {
      */
     public boolean isEmphasized() {
         return true;
+    }
+
+    @Override
+    public void apply(T[] arr) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

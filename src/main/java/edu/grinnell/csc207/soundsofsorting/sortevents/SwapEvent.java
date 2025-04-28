@@ -6,9 +6,13 @@ import java.util.List;
 /**
  * A <code>SwapEvent</code> logs a swap between two indices of the array.
  */
-public class SwapEvent<T> {
+public class SwapEvent<T> implements SortEvent<T> {
     List<Integer> swapped = new ArrayList<>();
 
+    public SwapEvent(int index1, int index2) {
+        swapped.add(index1);
+        swapped.add(index2);
+    }
     /**
      * gets swapped events
      * 
@@ -55,5 +59,10 @@ public class SwapEvent<T> {
      */
     public boolean isEmphasized() {
         return true;
+    }
+
+    @Override
+    public void apply(T[] arr) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

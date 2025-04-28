@@ -7,16 +7,20 @@ import java.util.List;
  * A <code>CompareEvent</code> logs a comparison a sort makes between two
  * indices in the array.
  */
-public class CompareEvent<T> {
+public class CompareEvent<T> implements SortEvent<T> {
     List<Integer> compare = new ArrayList<>();
+
+    public CompareEvent(int index1, int index2) {
+        compare.add(index1);
+        compare.add(index2);
+    }
 
     /**
      * gets compare events
      * 
      * @return compare
      */
-    public List<Integer> getCompare() {
-        
+    public List<Integer> getCompare() { 
         return compare;
     }
 
@@ -41,5 +45,10 @@ public class CompareEvent<T> {
      */
     public boolean isEmphasized() {
         return false;
+    }
+
+    @Override
+    public void apply(T[] arr) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
