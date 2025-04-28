@@ -2,7 +2,6 @@ package edu.grinnell.csc207.soundsofsorting;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -144,7 +143,10 @@ public class ControlPanel extends JPanel {
                 }
                 isSorting = true;
 
-                List<String> sortedEvents = new ArrayList<>();
+                Integer[] sortedNotes = new Integer[notes.getNotes().length];
+                for (int i = 0; i < notes.getNotes().length; i++) {
+                    sortedNotes[i] = notes.getNotes()[i];
+                }
 
                 // 1. Create the sorting events list
                 // 2. Add in the compare events to the end of the list
@@ -167,10 +169,9 @@ public class ControlPanel extends JPanel {
                             e.apply(notes.getNotes());
                             // 3. Play the corresponding notes denoted by the
                             // affected indices logged in the event.
-                            for(int notes = 0; notes < e.getAffectedIndices().size(); notes++){
-                                int note = e.getAffectedIndices().get(notes);
-                                boolean emphasized = e.isEmphasized();
-                                scale.playNote(note, emphasized);
+                            for(int i = 0; i < e.getAffectedIndices().size(); i++){
+                                scale.playNote(i, notes.isHighlighted(i));
+                                notes.highlightNote(i);
                             }
                             
                             // 4. Highlight those affected indices.

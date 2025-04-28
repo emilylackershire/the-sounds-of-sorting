@@ -80,7 +80,7 @@ public class NoteIndices {
      * @param index the index to check
      * @return true if the given index is highlighted
      */
-    public boolean isHighlighted(int index) {
+    public boolean isHighlighted(Integer index) {
         return highlighted[index] == true;
     }
 
