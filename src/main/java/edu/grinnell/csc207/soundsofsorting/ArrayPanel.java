@@ -1,4 +1,5 @@
 package edu.grinnell.csc207.soundsofsorting;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -13,36 +14,41 @@ public class ArrayPanel extends JPanel {
     private NoteIndices notes;
     private static final int WIDTH = 400;
     private static final int HEIGHT = 300;
-   
+
     /**
      * Create a new <code>ArrayPanel</code> with the given notes and dimensions.
-     * @param notes the note indices 
-     * @param width the width of the panel
+     * 
+     * @param notes  the note indices
+     * @param width  the width of the panel
      * @param height the height of the panel
      */
     public ArrayPanel(NoteIndices notes, int width, int height) {
         this.notes = notes;
         this.setPreferredSize(new Dimension(width, height));
     }
+
     /**
+     * gets length
      * 
      * @param notes
-     * @return
+     * @return returns length
      */
     public int length(NoteIndices notes) {
         Integer[] indices = notes.getNotes();
         int length = indices.length;
         return length;
     }
+
     /**
      * gets the max index of the notes
-     * @param notes
+     * 
+     * @param arr array
      * @return - max index
      */
     public int maxIndex(Integer[] arr) {
         int max = 0;
-        for(int i = 1; i < arr.length; i++) {
-            if(arr[i] > arr[max]) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[max]) {
                 max = i;
             }
         }
@@ -56,19 +62,19 @@ public class ArrayPanel extends JPanel {
         Integer[] indices = notes.getNotes();
         int max = maxIndex(indices);
         int barWidth = WIDTH / indices.length;
-        g.clearRect(0, 0, WIDTH, HEIGHT); 
- 
-        for(int i = 0; i < indices.length * barWidth; i+= barWidth) {
-            barHeight = ((indices[i/ barWidth]) * (HEIGHT / indices[max])) + HEIGHT/indices[max];
-            barValues = (indices[i/ barWidth]);
+        g.clearRect(0, 0, WIDTH, HEIGHT);
+
+        for (int i = 0; i < indices.length * barWidth; i += barWidth) {
+            barHeight = ((indices[i / barWidth]) * (HEIGHT / indices[max])) + HEIGHT / indices[max];
+            barValues = (indices[i / barWidth]);
             barMax = (indices[max]);
-            barScale = barValues/barMax;
-            red = (int)(255 * barScale);
-            green = (int)(200 * barScale);
-            blue = (int)(200 * barScale);
+            barScale = barValues / barMax;
+            red = (int) (255 * barScale);
+            green = (int) (200 * barScale);
+            blue = (int) (200 * barScale);
             Color color = new Color(red, green, blue);
             g.setColor(color);
-            g.fillRect(i, HEIGHT - barHeight, barWidth, barHeight); 
+            g.fillRect(i, HEIGHT - barHeight, barWidth, barHeight);
         }
     }
 }

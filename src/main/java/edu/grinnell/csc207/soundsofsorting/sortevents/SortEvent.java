@@ -1,4 +1,5 @@
 package edu.grinnell.csc207.soundsofsorting.sortevents;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +10,18 @@ import java.util.List;
 public interface SortEvent<T> {
     List<String> sorted = new ArrayList<>();
 
-    public static List<String> getSorted(){
-            return sorted;
-        }
+    /**
+     * gets sorted events
+     * 
+     * @return sorted
+     */
+    public static List<String> getSorted() {
+        return sorted;
+    }
 
     /**
      * Applies this event to the array.
+     * 
      * @param arr the array to modify
      */
     public void apply(T[] arr);

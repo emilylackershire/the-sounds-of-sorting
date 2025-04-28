@@ -9,10 +9,23 @@ import java.util.List;
 public class SwapEvent<T> {
     List<Integer> swapped = new ArrayList<>();
 
-    public List<Integer> getSwapped(){
+    /**
+     * gets swapped events
+     * 
+     * @return swapped
+     */
+    public List<Integer> getSwapped() {
         return swapped;
     }
 
+    /**
+     * swaps
+     * 
+     * @param <T> T
+     * @param arr array
+     * @param i index 1
+     * @param j index 2
+     */
     public static <T> void swap(T[] arr, int i, int j) {
         T tmp = arr[i];
         arr[i] = arr[j];
@@ -21,22 +34,26 @@ public class SwapEvent<T> {
 
     /**
      * Applies this event to the array.
+     * 
      * @param arr the array to modify
+     * @param index1 index 1
+     * @param index2 index 2
      */
-    public void apply(T[] arr, int index1, int index2){
+    public void apply(T[] arr, int index1, int index2) {
         swap(arr, index1, index2);
     }
 
     /**
      * @return a list of the indices affected by this event
      */
-    public List<Integer> getAffectedIndices(){
+    public List<Integer> getAffectedIndices() {
         return swapped;
     }
+
     /**
      * @return <code>true</code> iff this event is emphasized
      */
-    public boolean isEmphasized(){
+    public boolean isEmphasized() {
         return true;
     }
 }
