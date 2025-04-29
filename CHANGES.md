@@ -8,4 +8,4 @@ The program doesn't run the sorting visualization. On the other hand, it looks l
 
 ## Changes made
 
-I knew this was issues in the run function, so I started working there. I wasn't calling the events sort, i was just making an empty list so I did this, which led to an error with selection sort. The error is due to how I did the lists, and I took some casting of list away which was a mistake.
+I knew this was issues in the run function, so I started working there. I wasn't calling the events sort, i was just making an empty list so I did this, which led to an error with selection sort. The error is due to how I did the lists, and I took some casting of list away which was a mistake. I fixed that, and then it worked! I also added in the code to acctually play the music, which I didn't figure out the first time. 
