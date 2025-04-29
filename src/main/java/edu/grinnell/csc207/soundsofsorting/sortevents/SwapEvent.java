@@ -52,6 +52,7 @@ public class SwapEvent<T> implements SortEvent<T> {
     /**
      * @return a list of the indices affected by this event
      */
+    @Override
     public List<Integer> getAffectedIndices() {
         return swapped;
     }

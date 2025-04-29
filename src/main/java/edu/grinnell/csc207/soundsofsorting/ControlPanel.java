@@ -90,6 +90,11 @@ public class ControlPanel extends JPanel {
     private ArrayPanel panel;
     private boolean isSorting;
 
+    public static void sortInts(Integer[] arr, List<SortEvent<Integer>> events) {
+        for (int i = 0; i < events.size(); i++) {
+            events.get(i).apply(arr);
+        }
+    }
     /**
      * Constructs a new ControlPanel.
      * 
@@ -143,12 +148,8 @@ public class ControlPanel extends JPanel {
                 }
                 isSorting = true;
 
-                Integer[] sortedNotes = new Integer[notes.getNotes().length];
-                for (int i = 0; i < notes.getNotes().length; i++) {
-                    sortedNotes[i] = notes.getNotes()[i];
-                }
-
                 // 1. Create the sorting events list
+                Integer[] arr = notes.getNotes().clone();
                 // 2. Add in the compare events to the end of the list
                 List<SortEvent<Integer>> events = (List<SortEvent<Integer>>) generateEvents(sorts.getSelectedItem().toString(), notes.getNotes());
                 
@@ -169,12 +170,14 @@ public class ControlPanel extends JPanel {
                             e.apply(notes.getNotes());
                             // 3. Play the corresponding notes denoted by the
                             // affected indices logged in the event.
-                            for(int i = 0; i < e.getAffectedIndices().size(); i++){
-                                scale.playNote(i, notes.isHighlighted(i));
-                                notes.highlightNote(i);
-                                panel.repaint();
+                            scale.playNote(e.getAffectedIndices().get(0), notes.isHighlighted(e.getAffectedIndices().get(0)));
+                            if(e.getAffectedIndices().size() > 1) {
+                                scale.playNote(e.getAffectedIndices().get(1), notes.isHighlighted(e.getAffectedIndices().get(1)));
+                                notes.highlightNote(e.getAffectedIndices().get(1));
                             }
                             
+                            panel.repaint();
+                            index++;
                             // 4. Highlight those affected indices.
                             //panel.repaint();
                         } else {
