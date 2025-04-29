@@ -30,8 +30,9 @@ public class CopyEvent<T>  implements SortEvent<T> {
      * @param index1 first index
      * @param index2 second index
      */
-    public void apply(T[] arr, int index1, int index2) {
-        arr[index1] = arr[index2];
+    @Override
+    public void apply(T[] arr) {
+        arr[copied.get(0)] = value;
     }
 
     /**
@@ -46,10 +47,5 @@ public class CopyEvent<T>  implements SortEvent<T> {
      */
     public boolean isEmphasized() {
         return true;
-    }
-
-    @Override
-    public void apply(T[] arr) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

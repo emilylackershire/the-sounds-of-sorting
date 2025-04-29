@@ -43,9 +43,11 @@ public class SwapEvent<T> implements SortEvent<T> {
      * @param index1 index 1
      * @param index2 index 2
      */
-    public void apply(T[] arr, int index1, int index2) {
-        swap(arr, index1, index2);
+    @Override
+    public void apply(T[] arr) {
+        swap(arr, swapped.get(0), swapped.get(1));
     }
+    
 
     /**
      * @return a list of the indices affected by this event
@@ -59,10 +61,5 @@ public class SwapEvent<T> implements SortEvent<T> {
      */
     public boolean isEmphasized() {
         return true;
-    }
-
-    @Override
-    public void apply(T[] arr) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

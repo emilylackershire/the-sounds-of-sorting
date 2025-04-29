@@ -47,15 +47,15 @@ public class ControlPanel extends JPanel {
             case "Selection":
                 return Sorts.selectionSort(arr);
             case "Insertion":
-                //return Sorts.insertionSort(arr);
+                return Sorts.insertionSort(arr);
             case "Bubble":
-                //return Sorts.bubbleSort(arr);
+                return Sorts.bubbleSort(arr);
             case "Merge":
-                //return Sorts.mergeSort(arr);
-            case ("Quick"):
-                //return Sorts.quickSort(arr);
-            case ("Exchange"):
-                //return Sorts.exchangeSort(arr);
+                return Sorts.mergeSort(arr);
+            case "Quick":
+                return Sorts.quickSort(arr);
+            case "Exchange":
+                return Sorts.exchangeSort(arr);
             default:
                 throw new IllegalArgumentException("generateEvents");
         }
@@ -172,10 +172,11 @@ public class ControlPanel extends JPanel {
                             for(int i = 0; i < e.getAffectedIndices().size(); i++){
                                 scale.playNote(i, notes.isHighlighted(i));
                                 notes.highlightNote(i);
+                                panel.repaint();
                             }
                             
                             // 4. Highlight those affected indices.
-                            panel.repaint();
+                            //panel.repaint();
                         } else {
                             this.cancel();
                             panel.repaint();
