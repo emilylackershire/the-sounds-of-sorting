@@ -63,8 +63,8 @@ public class ArrayPanel extends JPanel {
         double barScale, barValues, barMax;
         Integer[] indices = notes.getNotes();
         int max = maxIndex(indices);
-        int barWidth =width / indices.length;
-        g.clearRect(0, 0,width, height);
+        int barWidth = width / indices.length;
+        g.clearRect(0, 0, width, height);
 
         for (int i = 0; i < indices.length * barWidth; i += barWidth) {
             barHeight = ((indices[i / barWidth]) * (HEIGHT / indices[max])) + height / indices[max];
