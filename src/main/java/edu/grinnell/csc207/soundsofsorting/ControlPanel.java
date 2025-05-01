@@ -18,7 +18,7 @@ import edu.grinnell.csc207.soundsofsorting.sorts.Sorts;
  * Sorting application.
  */
 public class ControlPanel extends JPanel {
-   static Sorts sort = new Sorts();
+    static Sorts sort = new Sorts();
 
     /** The frames-per-second that the program should render at */
     private static final int FPS = 20;
@@ -90,6 +90,11 @@ public class ControlPanel extends JPanel {
     private ArrayPanel panel;
     private boolean isSorting;
 
+    /**
+     * Sorts the given array according to the given events.
+     * @param arr the array to sort
+     * @param events the list of sorting events to apply
+     */
     public static void sortInts(Integer[] arr, List<SortEvent<Integer>> events) {
         for (int i = 0; i < events.size(); i++) {
             events.get(i).apply(arr);
@@ -151,7 +156,8 @@ public class ControlPanel extends JPanel {
                 // 1. Create the sorting events list
                 Integer[] arr = notes.getNotes().clone();
                 // 2. Add in the compare events to the end of the list
-                List<SortEvent<Integer>> events = generateEvents(sorts.getSelectedItem().toString(), notes.getNotes());
+                List<SortEvent<Integer>> events = generateEvents(sorts.getSelectedItem().toString(),
+                    notes.getNotes());
                 
                 // NOTE: The Timer class repetitively invokes a method at a
                 // fixed interval. Here we are specifying that method
@@ -170,9 +176,11 @@ public class ControlPanel extends JPanel {
                             e.apply(notes.getNotes());
                             // 3. Play the corresponding notes denoted by the
                             // affected indices logged in the event.
-                            scale.playNote(e.getAffectedIndices().get(0), notes.isHighlighted(e.getAffectedIndices().get(0)));
-                            if(e.getAffectedIndices().size() > 1) {
-                                scale.playNote(e.getAffectedIndices().get(1), notes.isHighlighted(e.getAffectedIndices().get(1)));
+                            scale.playNote(e.getAffectedIndices().get(0),
+                                notes.isHighlighted(e.getAffectedIndices().get(0)));
+                            if (e.getAffectedIndices().size() > 1) {
+                                scale.playNote(e.getAffectedIndices().get(1),
+                                    notes.isHighlighted(e.getAffectedIndices().get(1)));
                                 notes.highlightNote(e.getAffectedIndices().get(1));
                             }
                             panel.repaint();

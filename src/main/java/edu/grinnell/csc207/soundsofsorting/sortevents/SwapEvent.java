@@ -9,6 +9,12 @@ import java.util.List;
 public class SwapEvent<T> implements SortEvent<T> {
     List<Integer> swapped = new ArrayList<>();
 
+    /**
+     * Creates a new <code>SwapEvent</code> with the given indices.
+     * 
+     * @param index1 the first index to swap
+     * @param index2 the second index to swap
+     */
     public SwapEvent(int index1, int index2) {
         swapped.add(index1);
         swapped.add(index2);
@@ -40,8 +46,6 @@ public class SwapEvent<T> implements SortEvent<T> {
      * Applies this event to the array.
      * 
      * @param arr the array to modify
-     * @param index1 index 1
-     * @param index2 index 2
      */
     @Override
     public void apply(T[] arr) {

@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 public class ArrayPanel extends JPanel {
     @SuppressWarnings("unused")
     private NoteIndices notes;
-    private int WIDTH = 400;
-    private int HEIGHT = 300;
+    private int width = 400;
+    private int height = 300;
 
     /**
      * Create a new <code>ArrayPanel</code> with the given notes and dimensions.
@@ -24,8 +24,8 @@ public class ArrayPanel extends JPanel {
      */
     public ArrayPanel(NoteIndices notes, int width, int height) {
         this.notes = notes;
-        this.WIDTH = width;
-        this.HEIGHT = height;
+        this.width = width;
+        this.height = height;
         this.setPreferredSize(new Dimension(width, height));
     }
 
@@ -63,11 +63,11 @@ public class ArrayPanel extends JPanel {
         double barScale, barValues, barMax;
         Integer[] indices = notes.getNotes();
         int max = maxIndex(indices);
-        int barWidth = WIDTH / indices.length;
-        g.clearRect(0, 0, WIDTH, HEIGHT);
+        int barWidth =width / indices.length;
+        g.clearRect(0, 0,width, height);
 
         for (int i = 0; i < indices.length * barWidth; i += barWidth) {
-            barHeight = ((indices[i / barWidth]) * (HEIGHT / indices[max])) + HEIGHT / indices[max];
+            barHeight = ((indices[i / barWidth]) * (HEIGHT / indices[max])) + height / indices[max];
             barValues = (indices[i / barWidth]);
             barMax = (indices[max]);
             barScale = barValues / barMax;
@@ -76,7 +76,7 @@ public class ArrayPanel extends JPanel {
             blue = (int) (200 * barScale);
             Color color = new Color(red, green, blue);
             g.setColor(color);
-            g.fillRect(i, HEIGHT - barHeight, barWidth, barHeight);
+            g.fillRect(i, height - barHeight, barWidth, barHeight);
         }
     }
 }

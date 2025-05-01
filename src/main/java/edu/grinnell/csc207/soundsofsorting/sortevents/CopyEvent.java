@@ -6,10 +6,16 @@ import java.util.List;
 /**
  * A <code>CopyEvent</code> logs a copy of a value into an index of the array.
  */
-public class CopyEvent<T>  implements SortEvent<T> {
+public class CopyEvent<T> implements SortEvent<T> {
     List<Integer> copied = new ArrayList<>();
     private T value;
 
+    /**
+     * Creates a new <code>CopyEvent</code> with the given index and value.
+     * 
+     * @param index the index of the array to copy into
+     * @param value the value to copy into the array
+     */
     public CopyEvent(int index, T value) {
         copied.add(index);
         this.value = value;
@@ -27,8 +33,6 @@ public class CopyEvent<T>  implements SortEvent<T> {
      * Applies this event to the array.
      * 
      * @param arr    the array to modify
-     * @param index1 first index
-     * @param index2 second index
      */
     @Override
     public void apply(T[] arr) {

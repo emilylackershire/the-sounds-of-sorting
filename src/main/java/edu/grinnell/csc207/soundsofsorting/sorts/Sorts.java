@@ -135,9 +135,11 @@ public class Sorts {
      * @param <T>  the type of arrays being merged
      * @param arr1 the first sorted array
      * @param arr2 the second sorted array
+     * @param events the list of sort events to be generated
      * @return a sorted array
      */
-    public static <T extends Comparable<? super T>> T[] merge(T[] arr1, T[] arr2, List<SortEvent<T>> events) {
+    public static <T extends Comparable<? super T>> T[] 
+        merge(T[] arr1, T[] arr2, List<SortEvent<T>> events) {
         T[] arr3 = Arrays.copyOf(arr1, arr1.length + arr2.length);
         int i = 0, j = 0, k = 0;
         while (i < arr1.length && j < arr2.length) {
@@ -192,9 +194,11 @@ public class Sorts {
      *
      * @param <T> the carrier type of the array
      * @param arr the array to sort
+     * @param events the list of sort events to be generated
      * @return the array sorted
      */
-    public static <T extends Comparable<? super T>> T[] mergeSortHelper(T[] arr, List<SortEvent<T>> events) {
+    public static <T extends Comparable<? super T>> T[] 
+        mergeSortHelper(T[] arr, List<SortEvent<T>> events) {
         if (arr.length > 1) {
             return merge(
                 mergeSortHelper(Arrays.copyOfRange(arr, 0, (arr.length / 2)), events),
@@ -218,8 +222,10 @@ public class Sorts {
         List<SortEvent<T>> events = new ArrayList<>();
         T[] arrTmp = Arrays.copyOf(arr, arr.length);
         if (arr.length > 1) {
-            T[] left = mergeSortHelper(Arrays.copyOfRange(arr, 0, arr.length / 2), (ArrayList<SortEvent<T>>) events);
-            T[] right = mergeSortHelper(Arrays.copyOfRange(arr, arr.length / 2, arr.length), (ArrayList<SortEvent<T>>) events);
+            T[] left = mergeSortHelper(Arrays.copyOfRange(arr, 0, arr.length / 2),
+                (ArrayList<SortEvent<T>>) events);
+            T[] right = mergeSortHelper(Arrays.copyOfRange(arr, arr.length / 2, arr.length),
+                (ArrayList<SortEvent<T>>) events);
             T[] merged = merge(left, right, (ArrayList<SortEvent<T>>) events);
             System.arraycopy(merged, 0, arrTmp, 0, merged.length);
         }
@@ -240,8 +246,10 @@ public class Sorts {
      * @param arr the array to sort
      * @param lo low number 
      * @param hi high number
+     * @param events the list of sort events to be generated
      */
-    public static <T extends Comparable<? super T>> void quickSortHelper(T[] arr, int lo, int hi, List<SortEvent<T>> events) {
+    public static <T extends Comparable<? super T>> void 
+        quickSortHelper(T[] arr, int lo, int hi, List<SortEvent<T>> events) {
         int med = hi;
         int left = lo;
         int right;
@@ -338,6 +346,10 @@ public class Sorts {
         return events;
     }
 
+    /**
+     * Returns the list of compare events.
+     * @return the list of compare events
+     */
     public static CopyEvent getCopEvent() {
         return copEvent;
     }
