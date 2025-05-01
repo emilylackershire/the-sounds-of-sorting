@@ -175,7 +175,6 @@ public class ControlPanel extends JPanel {
                                 scale.playNote(e.getAffectedIndices().get(1), notes.isHighlighted(e.getAffectedIndices().get(1)));
                                 notes.highlightNote(e.getAffectedIndices().get(1));
                             }
-                            
                             panel.repaint();
                             index++;
                             // 4. Highlight those affected indices.
