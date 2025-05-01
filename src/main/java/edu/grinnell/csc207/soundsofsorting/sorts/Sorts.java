@@ -346,18 +346,9 @@ public class Sorts {
     SwapEvent swap = new SwapEvent(0, 0);
     CompareEvent comparing = new CompareEvent(0, 0);
 
-    <T> void eventSort(T[] l, List<String> events) {
-        for (int i = 0; i < l.length; i++) {
-            if ("copy".equals(events.get(i))) {
-                copy.apply(l);
-                i++;
-            } else if ("swap".equals(events.get(i))) {
-                swap.apply(l);
-                i++;
-            } else if ("compare".equals(events.get(i))) {
-                comparing.apply(l, i);
-                i++;
-            }
+    <T> void eventSort(T[] l, List<SortEvent<T>> events) {
+        for (SortEvent<T> event : events) {
+            event.apply(l);
         }
     }
 }

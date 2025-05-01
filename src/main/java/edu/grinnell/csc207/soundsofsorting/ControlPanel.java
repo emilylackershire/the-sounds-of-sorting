@@ -147,11 +147,11 @@ public class ControlPanel extends JPanel {
                     return;
                 }
                 isSorting = true;
-
+                panel.repaint();
                 // 1. Create the sorting events list
                 Integer[] arr = notes.getNotes().clone();
                 // 2. Add in the compare events to the end of the list
-                List<SortEvent<Integer>> events = (List<SortEvent<Integer>>) generateEvents(sorts.getSelectedItem().toString(), notes.getNotes());
+                List<SortEvent<Integer>> events = generateEvents(sorts.getSelectedItem().toString(), notes.getNotes());
                 
                 // NOTE: The Timer class repetitively invokes a method at a
                 // fixed interval. Here we are specifying that method
@@ -187,9 +187,7 @@ public class ControlPanel extends JPanel {
                         }
                     }
                 }, 0, toPeriod(FPS));
-
             }
-
         });
         add(playButton);
     }

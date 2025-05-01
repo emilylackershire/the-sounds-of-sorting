@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 public class ArrayPanel extends JPanel {
     @SuppressWarnings("unused")
     private NoteIndices notes;
-    private static final int WIDTH = 400;
-    private static final int HEIGHT = 300;
+    private int WIDTH = 400;
+    private int HEIGHT = 300;
 
     /**
      * Create a new <code>ArrayPanel</code> with the given notes and dimensions.
@@ -24,6 +24,8 @@ public class ArrayPanel extends JPanel {
      */
     public ArrayPanel(NoteIndices notes, int width, int height) {
         this.notes = notes;
+        this.WIDTH = width;
+        this.HEIGHT = height;
         this.setPreferredSize(new Dimension(width, height));
     }
 
@@ -47,7 +49,7 @@ public class ArrayPanel extends JPanel {
      */
     public int maxIndex(Integer[] arr) {
         int max = 0;
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             if (arr[i] > arr[max]) {
                 max = i;
             }
